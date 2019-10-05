@@ -18,12 +18,7 @@ const routes: Routes = [
   {
     path: ':room/search',
     component: SearchComponent,
-  },
-  {
-    path: ':room/playlist',
-    component: PlaylistComponent,
   }
-  
 ];
 
 @NgModule({
