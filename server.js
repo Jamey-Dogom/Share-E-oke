@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 
 
 // require('./server/config/mongoose');
-// require('./server/config/routes')(app);
+require('./server/config/routes')(app);
 
 app.all('*', (_, res) => res.sendFile(__dirname + '/public/dist/public/index.html'));
 

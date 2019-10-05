@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
 import { PlayingComponent } from './playing/playing.component';
+import { LyricsComponent } from './lyrics/lyrics.component';
 
 const routes: Routes = [
   {
@@ -13,11 +14,23 @@ const routes: Routes = [
   {
     path: ':room/playing',
     component: PlayingComponent,
+    children: [{
+      path: ':artist/:song',
+      component: LyricsComponent,
+    }
+
+    ]
   },
   {
     path: ':room/search',
     component: SearchComponent,
-  }
+  },
+
+  // {
+  //   path: ':artist/:song',
+  //   component: LyricsComponent,
+  // }
+
 ];
 
 @NgModule({

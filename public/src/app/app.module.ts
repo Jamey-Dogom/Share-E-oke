@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { HttpService } from './http.service';
 // Hector
-const config: SocketIoConfig = { url: '10.64.5.159:3333', options: {} };
+const config: SocketIoConfig = { url: '10.64.5.216:3333', options: {} };
 // Jamey
 // const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
 
@@ -33,6 +33,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PlaylistComponent } from './playlist/playlist.component';
+import { LyricsComponent } from './lyrics/lyrics.component';
 
 
 let gapiClientConfig: NgGapiClientConfig = {
@@ -50,7 +51,8 @@ let gapiClientConfig: NgGapiClientConfig = {
     WelcomeComponent,
     SearchComponent,
     PlayingComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    LyricsComponent
   ],
   imports: [
     BrowserModule,
