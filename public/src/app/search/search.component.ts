@@ -38,6 +38,11 @@ export class SearchComponent implements OnInit {
   playing = false;
   roomName;
 
+  lyricSearch = {
+    artist: '',
+    song: '',
+  }
+
   constructor(
     private _httpService: HttpService,
     private _socket: Socket,
@@ -71,9 +76,23 @@ export class SearchComponent implements OnInit {
       this.SongId = data.songId;
       console.log("First song Id", data.songId);
     })
+
+    this.lyricSearch = {
+      artist: '',
+      song: '',
+    }
   }
 
+  lyricsFind() {
+    this._route.params
+      .subscribe((params: Params) => {
+        let room = params.room
+        console.log(this.lyricSearch.artist);
+        console.log(this.lyricSearch.song);
+        this._router.navigate(['/' + room + '/playing/' + this.lyricSearch.artist + '/' + this.lyricSearch.song])
 
+      })
+  }
 
   greetRoom() {
     this._socket.emit("greetRoom", { msg: "Hello everyone", room: this.roomName });
@@ -191,7 +210,7 @@ export class SearchComponent implements OnInit {
         let vidThumburl = item.snippet.thumbnails.default.url;
         let vidThumbimg = '<pre><img  id="' + item.id.videoId + '" name="' + item.snippet.title + '" src="' + vidThumburl + '" alt="No  Image Available." style="width:300px;height:240px"></pre>'
 
-        $(`#results${counter}`).append('<pre>' + '<p style = "color: white">' + vidTitle + '</p>' + vidThumbimg + '</pre>').on('click', function () {
+        $(`#results${counter}`).append('<pre>' + '<p style = "color: #222831; text-align:center; width: 75%;">' + vidTitle + '</p>' + vidThumbimg + '<h1>➕</h1>' + '</pre>').on('click', function () {
           console.log(vidTitle);
           $("#videoInput").val(item.snippet.title);
           self.newSong.link = item.id.videoId
@@ -251,4 +270,5 @@ export class SearchComponent implements OnInit {
 
 
 }
+
 

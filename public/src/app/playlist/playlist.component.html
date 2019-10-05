@@ -22,11 +22,13 @@
 <body>
     <mat-sidenav-container class="example-container" *ngIf="shouldRun">
 
+
         <!-- SideNav elements here -->
         <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
             (closed)="events.push('close!')">
             Sidenav content
         </mat-sidenav>
+
 
         <!-- Main Content here -->
         <mat-sidenav-content class="charcoal-bg">

@@ -19,6 +19,11 @@ export class PlaylistComponent implements OnInit {
   shouldRun = true;
   roomName;
 
+  opened: boolean;
+  playlist;
+
+  shouldRun = true;
+  roomName;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -34,8 +39,9 @@ export class PlaylistComponent implements OnInit {
         this.roomName = params.room;
         this._httpService.getPlaylist({ room: this.roomName })
           .subscribe((playlist) => {
+
             console.log("Playlist: ", playlist);
-            this.playlist = playlist;
+playlist = playlist;
           })
       })
   }
