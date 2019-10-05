@@ -10,8 +10,8 @@ app.use(express.urlencoded({
 }));
 
 
-// require('./server/config/mongoose');
-// require('./server/config/routes')(app);
+require('./server/config/mongoose');
+require('./server/config/routes')(app);
 
 app.all('*', (_, res) => res.sendFile(__dirname + '/public/dist/public/index.html'));
 
@@ -21,8 +21,14 @@ const io = require('socket.io')(server);
 // Socket Events
 io.on("connection", function(socket) {
 
+    // join user into room
     socket.on("roomName", (data => {
         console.log(data);
         socket.join(data.room);
     }))
+
+    // Give user socket ID
+    socket.on("getId", function(){
+        socket.emit("hereBro", {id: socket.id });
+    });
 });

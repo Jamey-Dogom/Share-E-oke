@@ -17,6 +17,7 @@ export class PlayingComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
 
+  PL = null;
   shouldRun = true;
   roomName;
   
@@ -24,6 +25,7 @@ export class PlayingComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _socket: Socket,
+    private _httpService: HttpService,
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,11 @@ export class PlayingComponent implements OnInit {
       .subscribe((params: Params) => {
         console.log("Params: ", params);
         this.roomName = params.room;
-        this._socket.emit("roomName", params);
+        this._httpService.getPlaylist(params.room)
+          .subscribe((data:any) => {
+            this.PL = data.playlist[0];
+            console.log('Playlist: ', this.PL);
+          })
       })
   }
 
