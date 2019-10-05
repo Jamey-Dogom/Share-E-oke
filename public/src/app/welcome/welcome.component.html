@@ -1,1 +1,47 @@
-<p>welcome works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome Page</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Icons From Materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Format: <i class="material-icons">add</i> -->
+
+</head>
+
+<body>
+    <div class="container row">
+        <header>
+            <h1 class="center blue-f m-top-0">Share-E-oke</h1>
+        </header>
+
+        <main class="row">
+            <div class="selection col s6 push-s3 white-bg border-rad blue-border" style="padding: 0;">
+                <h5 class="m-top-0 blue-bg center"> Join Party</h5>
+                <form (submit)="joinRoom()" class="row">
+                    <div>
+                        <input class="col s6 center push-s3" placeholder="Room Name" type="text" name="room" [(ngModel)]="roomName">
+                    </div> <br> <br> <br>
+                    <button style="left: 30.3%;" class="col push-s4 btn waves blue-bg">Enter Room</button>
+                </form>
+            </div>
+        </main>
+
+
+
+
+
+    </div>
+</body>
+
+</html>
