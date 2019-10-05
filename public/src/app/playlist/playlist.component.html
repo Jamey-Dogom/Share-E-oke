@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +25,16 @@
         <!-- SideNav elements here -->
         <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
             (closed)="events.push('close!')">
-            Sidenav content
+            <div *ngIf="PL !== null">
+                <div *ngFor="let user of PL.users">
+                    <p class="pad-2">{{user}}</p>
+                    <div class="charcoal-f divider">
+
+                    </div>
+                </div>
+            </div>
         </mat-sidenav>
+
 
 
         <!-- Main Content here -->
@@ -36,7 +43,7 @@
             <p><button class="sideNavTrigger btn" mat-button (click)="sidenav.toggle()"><i
                         class=" material-icons">menu</i></button></p>
 
-            
+
         </mat-sidenav-content>
     </mat-sidenav-container>
 

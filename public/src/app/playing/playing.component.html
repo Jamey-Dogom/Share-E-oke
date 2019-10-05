@@ -25,7 +25,14 @@
         <!-- SideNav elements here -->
         <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
             (closed)="events.push('close!')">
-            Sidenav content
+            <div *ngIf="PL !== null">
+                <div *ngFor="let user of PL.users">
+                    <p class="pad-2">{{user}}</p>
+                    <div class="charcoal-f divider">
+
+                    </div>
+                </div>
+            </div>
         </mat-sidenav>
 
         <!-- Main Content here -->
@@ -35,13 +42,14 @@
                         class=" material-icons">menu</i></button></p>
 
             <!-- Spot for video -->
-            <video style="margin-left: 23%;" width="320" height="240" controls>
-
+            <video style="margin-left: 5.5%;" width="320" height="240" controls>
+                
             </video>
 
             <!-- Div for lyrics -->
             <div class="pad-10">
-                <p class="blue-f">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa id temporibus aliquam iste iusto
+                <p class="blue-f">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa id temporibus aliquam
+                    iste iusto
                     magnam, nemo, saepe voluptate nobis alias optio porro voluptas obcaecati libero aut maxime
                     blanditiis nisi? Fuga.</p>
             </div>
@@ -52,4 +60,3 @@
 
 </html>
 
-<!-- <router-outlet></router-outlet> -->

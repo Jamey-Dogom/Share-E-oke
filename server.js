@@ -22,8 +22,14 @@ const io = require('socket.io')(server);
 // Socket Events
 io.on("connection", function(socket) {
 
+    // join user into room
     socket.on("roomName", (data => {
         console.log(data);
         socket.join(data.room);
     }))
+
+    // Give user socket ID
+    socket.on("getId", function(){
+        socket.emit("hereBro", {id: socket.id });
+    });
 });

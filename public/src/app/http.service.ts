@@ -13,16 +13,16 @@ export class HttpService {
     return this._http.post('/api/playlist', playlist);
   }
 
-  getPlaylist(room) {
-    return this._http.get('/api/playlist/' + room);
+  getPlaylist(id) {
+    return this._http.get('/api/playlist/' + id);
   }
 
   updatePlaylist(playlist) {
     return this._http.put(`/api/playlist/${playlist.id}`, playlist);
   }
 
-  deletePlaylist(room) {
-    return this._http.delete('/api/playlist/' + room);
+  deletePlaylist(id) {
+    return this._http.delete('/api/playlist/' + id);
     
   }
   getSongLyrics(artist, song) {

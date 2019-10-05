@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const PlaylistController = require('./../controllers/playlists');
-// 'use strict'
-// const lyricsController = require('./../controllers/lyrics');
 
 module.exports = function(app) {
 
@@ -13,7 +11,6 @@ module.exports = function(app) {
 
     app.put('/api/playlist/:id', PlaylistController.update);
 
-    // app.get('/api/lyrics/:artist/:song', lyricsController.findSongLyrics);
 
 };
 

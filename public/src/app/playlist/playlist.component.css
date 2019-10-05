@@ -14,6 +14,10 @@ body {
     background-color: #00A8E0;
 }
 
+.charcoal-f {
+    color: #222831;
+}
+
 .charcoal-bg {
     background-color: #222831;
 }
@@ -32,6 +36,10 @@ body {
 
 .pad-10 {
     padding: 10%;
+}
+
+.pad-2 {
+    padding: 2%;
 }
 .blue-border {
     border: 4px solid #00A8E0;

@@ -11,7 +11,7 @@ import { Socket } from 'ngx-socket-io';
 export class PlaylistComponent implements OnInit {
 
   opened: boolean;
-  playlist;
+  PL = null;
 
   shouldRun = true;
   roomName;
@@ -29,11 +29,10 @@ export class PlaylistComponent implements OnInit {
       .subscribe((params: Params) => {
         console.log("Params: ", params);
         this.roomName = params.room;
-        this._httpService.getPlaylist({ room: this.roomName })
-          .subscribe((playlist) => {
-            console.log("Playlist: ",playlist);
-            this.playlist = playlist;
-
+        this._httpService.getPlaylist(params.room)
+          .subscribe((data:any) => {
+            console.log("Playlist: ",data.playlist[0]);
+            this.PL = data.playlist[0];
           })
       })
   }

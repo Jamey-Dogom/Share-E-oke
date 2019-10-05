@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-mongoose.connect('mongodb://localhost/sharEokeDB', {
+
+mongoose.connect('mongodb://localhost/shareEokeDB', {
     useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
 });
 
