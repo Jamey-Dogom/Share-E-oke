@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: ':room/playlist',
     component: PlaylistComponent,
-  },
+  }
+  
 ];
 
 @NgModule({
