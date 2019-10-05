@@ -15,9 +15,6 @@ export class PlaylistComponent implements OnInit {
 
   shouldRun = true;
   roomName;
-
-  shouldRun = true;
-  roomName;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
