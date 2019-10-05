@@ -21,7 +21,11 @@ const config: SocketIoConfig = { url: '10.64.5.159:3333', options: {} };
 // const config: SocketIoConfig = { url: '10.64.5.216:3333', options: {} };
 
 // Jamey
+
+const config: SocketIoConfig = { url: '172.20.10.2.:3333', options: {} };
+
 // const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
+
 
 import {
   GoogleApiModule,

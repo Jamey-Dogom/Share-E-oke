@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+<div class="align">
 
-<body>
-  <div id="lyrics" *ngIf="lyrics">
-    <p *ngFor='let line of lyrics'>
-      {{line}}
-    </p>
+  <input type="text" [(ngModel)]="artist" placeholder=" Enter artist's name" class="align" id="ip2">
   </div>
-</body>
-
-</html>
+  <div class="align">
+ 
+  <input type="text" [(ngModel)]="title" placeholder=" Enter name of song" class="align" id="ip2">
+  </div>
+  <div class="align">
+  <button ion-button round (click)="getLyrics()" >
+    Get Lyrics
+  </button>
+  </div>

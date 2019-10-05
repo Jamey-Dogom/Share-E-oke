@@ -24,7 +24,11 @@ const routes: Routes = [
   {
     path: ':room/playlist',
     component: PlaylistComponent,
-  }
+  },
+  // {
+  //   path: ':room/lyrics',
+  //   component: LyricsComponent,
+  // }
 
   // {
   //   path: ':artist/:song',

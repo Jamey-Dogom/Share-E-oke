@@ -16,14 +16,30 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<body>
+<body style = "margin-top: .5%">
   <div class="mx-auto">
     <div class="row">
-      <div class="col-12">
-      <div class="container"><h3>Songs</h3></div>
+      <div class = "col-1"></div>
+      <div class="col-10">
+      <div class="container"><h3 style = "color: #00A8E0">Search</h3></div>
       <div class="card mb-4">
         <div class="card-header">
             <form (submit)="myFunction()">
+                <div class="form-row align-items-center">
+                  <div class="col-md-12">
+                    <input class="form-control mx-auto d-inline-block mb-2" name="query"
+                  [(ngModel)]="search.query1" type="text" placeholder="Artist" />
+                  </div>
+                  <div class="col-md-12">
+                      <input class="form-control mx-auto d-inline-block mb-2" name="query2"
+                    [(ngModel)]="search.query2" type="text" placeholder="Song Title" />
+                    </div>
+                  <div class="col-sm-4">
+                      <button type="submit" class="btn" style = "background-color: #00A8E0">Find</button>
+                  </div>
+                </div>
+              </form>
+            <!-- <form (submit)="myFunction()">
                 <div class="input-group">
                     <input class="form-control mx-auto d-inline-block" name="query"
                     [(ngModel)]="search.query" type="text" placeholder="Look for Songs" />
@@ -31,8 +47,8 @@
                       <button type="submit" class="btn" style = "background-color: #00A8E0">Find</button>
                     </div>
                   </div>
-              </form>
-            <div class="overflow-auto" *ngIf="search.query">
+              </form> -->
+            <div class="overflow-auto" *ngIf="search != null">
               <!-- <div id ="results"> -->
                   <div id ="results1"></div>
                   <div id ="results2"></div>
@@ -65,6 +81,7 @@
         </div>
       </div>
     </div>
+    <div class = "col-1"></div>
   </div>
 </body>
 </html>
