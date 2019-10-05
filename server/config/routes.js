@@ -13,9 +13,7 @@ module.exports = function(app) {
 
     app.put('/api/playlist/:id', PlaylistController.update);
 
-    app.get('/api/lyrics/:artist/:song', lyricsController.findSongLyrics)
-
-    app.get('/api/lyrics/:artist/:song', lyricsController.findSongLyrics)
+    app.get('/api/lyrics/:artist/:song', lyricsController.findSongLyrics);
 
 };
 
