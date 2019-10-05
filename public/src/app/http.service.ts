@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+
 
   constructor(private _http: HttpClient) { }
 
@@ -25,4 +27,10 @@ export class HttpService {
   getSongLyrics(artist, song) {
     return this._http.get(`/api/lyrics/${artist}/${song}`);
   }
+    
+  getSongLyrics(artist, song) {
+    return this._http.get(`/api/lyrics/${artist}/${song}`);
+  }
+// =======
+
 }

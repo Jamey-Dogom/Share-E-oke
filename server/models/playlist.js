@@ -11,4 +11,3 @@ const PlaylistSchema = new mongoose.Schema({
 
 mongoose.model("Playlist", PlaylistSchema);
 
-

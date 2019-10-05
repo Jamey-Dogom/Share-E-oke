@@ -6,6 +6,7 @@ import { PlayingComponent } from './playing/playing.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { LyricsComponent } from './lyrics/lyrics.component';
 
+
 const routes: Routes = [
   {
     path: '',
