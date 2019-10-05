@@ -5,7 +5,6 @@ import { HttpService } from '../http.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 // Bringing in The Socket
 import { Socket } from 'ngx-socket-io';
-import { MatSidenavContent } from '@angular/material';
 
 
 @Component({
