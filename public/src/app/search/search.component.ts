@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
   ) {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
-
+      // console.log(gapi['client']);
       gapi['client'].setApiKey(
         'AIzaSyAStWnWGpBLHOiAJNM2KCwvME9yZmiY_SY');
     });
