@@ -26,13 +26,13 @@
         </header>
 
         <main class="row">
-            <div class="selection col s6 push-s3 white-bg border-rad blue-border" style="padding: 0;">
+            <div class="selection col s7 white-bg border-rad blue-border" style="position: relative; padding: 0; left:21.5%;">
                 <h5 class="m-top-0 blue-bg center"> Join Party</h5>
                 <form (submit)="joinRoom()" class="row">
                     <div>
-                        <input class="col s6 center push-s3" placeholder="Room Name" type="text" name="room" [(ngModel)]="roomName">
+                        <input class="col s8 center push-s2" placeholder="Room Name" type="text" name="room" [(ngModel)]="roomName">
                     </div> <br> <br> <br>
-                    <button style="left: 18.5%;" class="col push-s4 btn waves blue-bg">Enter Room</button>
+                    <button style="left: 22%;" class="col push-s4 btn waves blue-bg">Enter Room</button>
                 </form>
             </div>
         </main>
