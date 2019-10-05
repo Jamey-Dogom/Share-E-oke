@@ -4,6 +4,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
 import { PlayingComponent } from './playing/playing.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { LyricsComponent } from './lyrics/lyrics.component';
+
 
 const routes: Routes = [
   {
@@ -23,6 +25,12 @@ const routes: Routes = [
     path: ':room/playlist',
     component: PlaylistComponent,
   }
+
+  // {
+  //   path: ':artist/:song',
+  //   component: LyricsComponent,
+  // }
+
 ];
 
 @NgModule({

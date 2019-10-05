@@ -15,20 +15,12 @@ export class WelcomeComponent implements OnInit {
   constructor(
     private _httpService: HttpService,
     private _router: Router,
-    private _socket: Socket,
-  ) { }
+    ) { }
 
   ngOnInit() {
   }
 
   joinRoom() {
-    // Create new Playlist and send user to Playing Component
-    this._socket.emit("roomName", { room: this.roomName });
-    this._httpService.createPlaylist({ room: this.roomName })
-      .subscribe(playlist => {
-        console.log("New Playlist: ", playlist);
-        this._router.navigate([`/${this.roomName}/`, "playing"])
-      })
+    this._router.navigate([`/${this.roomName}/`, "playing"])
   }
-
 }

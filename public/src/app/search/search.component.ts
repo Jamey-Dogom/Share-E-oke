@@ -191,7 +191,7 @@ export class SearchComponent implements OnInit {
         let vidThumburl = item.snippet.thumbnails.default.url;
         let vidThumbimg = '<pre><img  id="' + item.id.videoId + '" name="' + item.snippet.title + '" src="' + vidThumburl + '" alt="No  Image Available." style="width:300px;height:240px"></pre>'
 
-        $(`#results${counter}`).append('<pre>' + '<p style = "color: white">' + vidTitle + '</p>' + vidThumbimg + '</pre>').on('click', function () {
+        $(`#results${counter}`).append('<pre>' + '<p style = "color: #222831; text-align:center; width: 75%;">' + vidTitle + '</p>' + vidThumbimg + '<h1>➕</h1>' + '</pre>').on('click', function () {
           console.log(vidTitle);
           $("#videoInput").val(item.snippet.title);
           self.newSong.link = item.id.videoId
@@ -251,4 +251,5 @@ export class SearchComponent implements OnInit {
 
 
 }
+
 
