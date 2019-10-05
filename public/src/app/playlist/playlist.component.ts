@@ -17,6 +17,7 @@ export class PlaylistComponent implements OnInit {
   playlist;
 
   shouldRun = true;
+  roomName;
 
   constructor(
     private _route: ActivatedRoute,
@@ -26,6 +27,17 @@ export class PlaylistComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Get room name from URL, save above and send to server to join room.
+    this._route.params
+      .subscribe((params: Params) => {
+        console.log("Params: ", params);
+        this.roomName = params.room;
+        this._httpService.getPlaylist({ room: this.roomName })
+          .subscribe((playlist) => {
+            console.log("Playlist: ", playlist);
+            this.playlist = playlist;
+          })
+      })
   }
 
 }
