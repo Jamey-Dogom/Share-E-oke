@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http'
 
 
 import { HttpService } from './http.service';
-const config: SocketIoConfig = { url: '192.168.0.146:3333', options: {} };
+const config: SocketIoConfig = { url: '10.64.5.159:3333', options: {} };
 
 
 import {
@@ -25,6 +25,7 @@ import {
   NG_GAPI_CONFIG,
   GoogleApiConfig
 }  from "ng-gapi";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 let gapiClientConfig: NgGapiClientConfig = {
   client_id: "CLIENT_ID",
@@ -54,6 +55,7 @@ let gapiClientConfig: NgGapiClientConfig = {
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig
     }),
+    BrowserAnimationsModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

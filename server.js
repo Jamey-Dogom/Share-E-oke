@@ -17,3 +17,12 @@ app.all('*', (_, res) => res.sendFile(__dirname + '/public/dist/public/index.htm
 
 const server = app.listen(3333, () => console.log('songs sung on 3333'));
 const io = require('socket.io')(server);
+
+// Socket Events
+io.on("connection", function(socket) {
+
+    socket.on("roomName", (data => {
+        console.log(data);
+        socket.join(data.room);
+    }))
+});
