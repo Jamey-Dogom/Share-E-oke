@@ -30,7 +30,6 @@ import {
   GoogleApiConfig
 }  from "ng-gapi";
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PlaylistComponent } from './playlist/playlist.component';
 
@@ -64,7 +63,6 @@ let gapiClientConfig: NgGapiClientConfig = {
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig
     }),
-    BrowserAnimationsModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
