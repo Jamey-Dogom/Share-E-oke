@@ -21,5 +21,8 @@ export class HttpService {
 
   deletePlaylist(room) {
     return this._http.delete('/api/playlist/' + room);
+    
+  getSongLyrics(artist, song) {
+    return this._http.get(`/api/lyrics/${artist}/${song}`);
   }
 }
