@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.2.5",
     "@angular/platform-browser-dynamic": "~8.2.5",
     "@angular/router": "~8.2.5",
+    "@types/jquery": "^3.3.31",
     "ng-gapi": "0.0.73",
     "ngx-socket-io": "^3.0.1",
     "ngx-youtube-player": "^7.1.1",
