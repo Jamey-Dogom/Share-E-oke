@@ -10,3 +10,4 @@ const PlaylistSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 mongoose.model("Playlist", PlaylistSchema);
+

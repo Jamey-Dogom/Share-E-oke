@@ -15,5 +15,7 @@ module.exports = function(app) {
 
     app.get('/api/lyrics/:artist/:song', lyricsController.findSongLyrics)
 
+    app.get('/api/lyrics/:artist/:song', lyricsController.findSongLyrics)
+
 };
 

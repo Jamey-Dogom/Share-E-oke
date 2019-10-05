@@ -38,6 +38,11 @@ export class SearchComponent implements OnInit {
   playing = false;
   roomName;
 
+  lyricSearch = {
+    artist: '',
+    song: '',
+  }
+
   constructor(
     private _httpService: HttpService,
     private _socket: Socket,
@@ -71,9 +76,23 @@ export class SearchComponent implements OnInit {
       this.SongId = data.songId;
       console.log("First song Id", data.songId);
     })
+
+    this.lyricSearch = {
+      artist: '',
+      song: '',
+    }
   }
 
+  lyricsFind() {
+    this._route.params
+      .subscribe((params: Params) => {
+        let room = params.room
+        console.log(this.lyricSearch.artist);
+        console.log(this.lyricSearch.song);
+        this._router.navigate(['/' + room + '/playing/' + this.lyricSearch.artist + '/' + this.lyricSearch.song])
 
+      })
+  }
 
   greetRoom() {
     this._socket.emit("greetRoom", { msg: "Hello everyone", room: this.roomName });

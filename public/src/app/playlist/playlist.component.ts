@@ -10,9 +10,11 @@ import { Socket } from 'ngx-socket-io';
 })
 export class PlaylistComponent implements OnInit {
 
-
   opened: boolean;
   playlist;
+
+  shouldRun = true;
+  roomName;
 
   shouldRun = true;
   roomName;
@@ -34,6 +36,7 @@ export class PlaylistComponent implements OnInit {
           .subscribe((playlist) => {
             console.log("Playlist: ",playlist);
             this.playlist = playlist;
+
           })
       })
   }
