@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
 import { PlayingComponent } from './playing/playing.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,11 @@ const routes: Routes = [
   {
     path: ':room/search',
     component: SearchComponent,
-  }
+  },
+  {
+    path: ':room/playlist',
+    component: PlaylistComponent,
+  },
 ];
 
 @NgModule({
