@@ -13,7 +13,11 @@ import { MatSidenavContent } from '@angular/material';
   styleUrls: ['./playlist.component.css']
 })
 export class PlaylistComponent implements OnInit {
-  events: string[] = [];
+  opened: boolean;
+  playlist;
+
+  shouldRun = true;
+  roomName;
 
   opened: boolean;
   playlist;
@@ -35,8 +39,9 @@ export class PlaylistComponent implements OnInit {
         this.roomName = params.room;
         this._httpService.getPlaylist({ room: this.roomName })
           .subscribe((playlist) => {
-            console.log("Playlist: ",playlist);
-            this.playlist = playlist;
+
+            console.log("Playlist: ", playlist);
+playlist = playlist;
           })
       })
   }

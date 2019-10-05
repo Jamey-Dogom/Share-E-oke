@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PlayList</title>
-
+    <title>Party Playing</title>
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -16,26 +15,31 @@
 
     <!-- Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 </head>
 
 <body>
     <mat-sidenav-container class="example-container" *ngIf="shouldRun">
 
-         <!-- SideNav elements here -->
-         <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-         (closed)="events.push('close!')">
-         Sidenav content
-     </mat-sidenav>
+
+        <!-- SideNav elements here -->
+        <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+            (closed)="events.push('close!')">
+            Sidenav content
+        </mat-sidenav>
 
 
-        <!-- Main Content Here -->
+        <!-- Main Content here -->
         <mat-sidenav-content class="charcoal-bg">
+
             <p><button class="sideNavTrigger btn" mat-button (click)="sidenav.toggle()"><i
                         class=" material-icons">menu</i></button></p>
 
+            
         </mat-sidenav-content>
-
     </mat-sidenav-container>
+
 </body>
 
 </html>
