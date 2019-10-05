@@ -1,7 +1,14 @@
-<p>lyrics works!</p>
+<div class="align">
 
-<div id="lyrics" *ngIf="lyrics">
-    <p *ngFor='let line of lyrics'>
-      {{line}}
-    </p>
-</div>
+  <input type="text" [(ngModel)]="artist" placeholder=" Enter artist's name" class="align" id="ip2">
+  </div>
+  <div class="align">
+ 
+  <input type="text" [(ngModel)]="title" placeholder=" Enter name of song" class="align" id="ip2">
+  </div>
+  <div class="align">
+  <button ion-button round (click)="getLyrics()" >
+    Get Lyrics
+  </button>
+  </div>
+  

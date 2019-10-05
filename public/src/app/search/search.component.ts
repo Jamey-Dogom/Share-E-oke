@@ -7,6 +7,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscriber } from 'rxjs';
 import { GoogleApiService } from 'ng-gapi/lib/GoogleApiService';
 import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
+import { Title } from '@angular/platform-browser';
+// import {quicklyrics} from 'quicklyrics'
+// import azlyrics from 'js-azlyrics'
+import { lyrics } from 'simple-get-lyrics'
+
 
 @Component({
   selector: 'app-search',
@@ -14,12 +19,13 @@ import { CombineLatestOperator } from 'rxjs/internal/observable/combineLatest';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  playlist = null;
+  PL = null;
   search = {
-    query: ''
+    query1: '',
+    query2: ''
   }
 
-  allPlaylistSongs = [];
+  // allPlaylistSongs = [];
 
   weGotResults = false;
 
@@ -34,7 +40,7 @@ export class SearchComponent implements OnInit {
 
   SongId = null;
   // UserId is the Sockets ID
-  userId;
+  socketId;
   playing = false;
   roomName;
 
@@ -42,6 +48,8 @@ export class SearchComponent implements OnInit {
     artist: '',
     song: '',
   }
+
+  lyrics : any;
 
   constructor(
     private _httpService: HttpService,
@@ -59,49 +67,73 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._socket.emit("getId", (data) => {
+      this._socket.on("hereBro", (data:any) => {
+        this.socketId = data.id;
+      });
+    })
     this._route.params
       .subscribe((params: Params) => {
-        this.roomName = params.room;
-        this._socket.emit("roomName", { room: params.room })
+        this._httpService.getPlaylist({id: params.room })
+          .subscribe((data:any) => {
+            this.PL = data.playlist[0];
+            console.log("PlayList: ", data)
+          });
       });
-    // send room name to server
-    // Add new song to playlist upon recieving from server 
-    this._socket.on("newSong", (data) => {
-      console.log("NewSong: ", data);
-      this.allPlaylistSongs.push(data.song);
-    });
-
-    // Recieve first song from server
-    this._socket.on("setSongId", data => {
-      this.SongId = data.songId;
-      console.log("First song Id", data.songId);
-    })
-
     this.lyricSearch = {
       artist: '',
       song: '',
     }
+
+    // this.lyrics = lyrics.search('Hindi Zahra', 'Fascination');
+
+  //   const options = {
+  //     searchEndpoint: '/azlyricssearch',
+  //     mainEndpoint: '/azlyrics'
+  //   };
+
+  //   azlyrics.get('Drake energy', options).then((song) => {
+  //     console.log(song);
+  //     // console.log(`Lyrics for ${song.song} by ${song.artist}:\n${song.lyrics}`);
+  //  });
+
+    // console.log("hi");
+//   quicklyrics("j cole", "no role modelz", function(lyrics) {
+//     //lyrics in an array
+//     console.log("hi");
+//     // console.log(lyrics[0]);
+// });
+
+
+
+
   }
 
-  lyricsFind() {
-    this._route.params
-      .subscribe((params: Params) => {
-        let room = params.room
-        console.log(this.lyricSearch.artist);
-        console.log(this.lyricSearch.song);
-        this._router.navigate(['/' + room + '/playing/' + this.lyricSearch.artist + '/' + this.lyricSearch.song])
+  
 
-      })
-  }
+  
 
-  greetRoom() {
-    this._socket.emit("greetRoom", { msg: "Hello everyone", room: this.roomName });
-    this._socket.on("Greeting", (data) => {
-      console.log(data);
-    })
-  }
+  // lyricsFind() {
+  //   this._route.params
+  //     .subscribe((params: Params) => {
+  //       let room = params.room
+  //       console.log(this.lyricSearch.artist);
+  //       console.log(this.lyricSearch.song);
+  //       this._router.navigate(['/' + room + '/playing/' + this.lyricSearch.artist + '/' + this.lyricSearch.song])
 
-  onSubmit() {
+  //     })
+  // }
+
+  // greetRoom() {
+  //   this._socket.emit("greetRoom", { msg: "Hello everyone", room: this.roomName });
+  //   this._socket.on("Greeting", (data) => {
+  //     console.log(data);
+  //   })
+  // }
+
+
+
+  // onSubmit() {
     // if there is a song playing 
     // add the song the playlist songs[]
 
@@ -109,41 +141,41 @@ export class SearchComponent implements OnInit {
     // in the room that a new song was added
 
     // update the playlist in mongo with new song
-    let self = this
+    // let self = this
 
 
     // check if there is a song playing
-    if (this.playing) {
-      console.log("something is playing")
-      let nextUp = {
-        id: this.newSong.link,
-        name: this.newSong.name,
-        likes: 0
-      }
-      this.newSong = {
-        link: '',
-        name: ''
-      }
-      if (nextUp.name != '') {
-        this.allPlaylistSongs.push(nextUp);
-        // Sending song back to server to emit to room
-        this._socket.emit("nextSong", { song: nextUp, room: this.roomName });
-      }
+    // if (this.playing) {
+    //   console.log("something is playing")
+    //   let nextUp = {
+    //     id: this.newSong.link,
+    //     name: this.newSong.name,
+    //     likes: 0
+    //   }
+    //   this.newSong = {
+    //     link: '',
+    //     name: ''
+    //   }
+    //   if (nextUp.name != '') {
+    //     this.allPlaylistSongs.push(nextUp);
+    //     // Sending song back to server to emit to room
+    //     this._socket.emit("nextSong", { song: nextUp, room: this.roomName });
+    //   }
 
 
-      try {
-        console.log(self.playlist)
+    //   try {
+    //     console.log(self.playlist)
 
-        self.playlist.songs.push(nextUp);
-        this._socket.on("updated", (data: any) => {
-          this.playlist = data;
-          console.log("new playlist", this.playlist)
+    //     self.playlist.songs.push(nextUp);
+    //     this._socket.on("updated", (data: any) => {
+    //       this.playlist = data;
+    //       console.log("new playlist", this.playlist)
 
-        });
-      }
-      catch (e) {
-        console.log(e)
-      }
+    //     });
+    //   }
+    //   catch (e) {
+    //     console.log(e)
+    //   }
 
 
       // this will send the playlist to the server
@@ -168,22 +200,22 @@ export class SearchComponent implements OnInit {
       // }
       // this._httpService.updatePlaylist(this.playlist)
       //   .subscribe(playlist => console.log(playlist));
-    }
+    // }
     // if not play the song - dont append the playlist and play song
-    else {
-      this.SongId = this.newSong.link;
-      this.playing = true;
-      // Send the song to the server to tell everyone in the room to play it
-      this._socket.emit("playThis", { songLink: this.newSong.link, room: this.roomName });
-      this.newSong = {
-        link: '',
-        name: ''
-      }
-    }
-    //  clear the input field
+  //   else {
+  //     this.SongId = this.newSong.link;
+  //     this.playing = true;
+  //     // Send the song to the server to tell everyone in the room to play it
+  //     this._socket.emit("playThis", { songLink: this.newSong.link, room: this.roomName });
+  //     this.newSong = {
+  //       link: '',
+  //       name: ''
+  //     }
+  //   }
+  //   //  clear the input field
 
-    //   set new song link to empty
-  }
+  //   //   set new song link to empty
+  // }
 
   makeRequest(q) {
     let self = this
@@ -230,9 +262,10 @@ export class SearchComponent implements OnInit {
   }
 
   myFunction() {
-    console.log(this.search.query)
+    console.log(this.search.query1)
     console.log(window['gapi'])
-    this.keyWordsearch(this.search.query);
+    let query = this.search.query1 + ' AND ' + this.search.query2;
+    this.keyWordsearch(query);
   };
 
   keyWordsearch(name) {
@@ -259,12 +292,12 @@ export class SearchComponent implements OnInit {
     console.log("HERE")
     this.SongId = null;
     if (currState == 0) {
-      if (this.allPlaylistSongs.length != 0) {
-        console.log(this.allPlaylistSongs[0].id)
-        this.SongId = this.allPlaylistSongs[0].id
-        this.playing = true;
-        this.allPlaylistSongs.shift();
-      }
+      // // if (this.allPlaylistSongs.length != 0) {
+      // //   console.log(this.allPlaylistSongs[0].id)
+      // //   this.SongId = this.allPlaylistSongs[0].id
+      // //   this.playing = true;
+      // //   this.allPlaylistSongs.shift();
+      // }
     }
   }
 

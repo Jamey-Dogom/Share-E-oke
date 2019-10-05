@@ -1,11 +1,11 @@
-const quicklyrics = require('quicklyrics');
+// 'use strict'
+// const lyrics = require('get-azlyrics');
 
-module.exports = {
-    findSongLyrics(req, res) {
-        quicklyrics(req.params.artist, req.params.song, function(lyrics) {
-            //lyrics in an array
-            console.log(lyrics);
-            res.json({lyrics});
-        }
-    )}
-}
+// module.exports = {
+//     findSonglyrics : function(res, req) {
+//         lyrics.getLyrics('daft punk - Daftendirekt')
+//         .then(x => console.log(x))
+//         .catch(err => console.log(err))
+//     } 
+// }
+ 
