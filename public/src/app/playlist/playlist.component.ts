@@ -13,7 +13,10 @@ import { MatSidenavContent } from '@angular/material';
   styleUrls: ['./playlist.component.css']
 })
 export class PlaylistComponent implements OnInit {
-  events: string[] = [];
+  opened: boolean;
+  playlist;
+
+  shouldRun = true;
 
   constructor(
     private _route: ActivatedRoute,

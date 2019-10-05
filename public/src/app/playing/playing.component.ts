@@ -19,6 +19,7 @@ export class PlayingComponent implements OnInit {
 
   shouldRun = true;
   roomName;
+  
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
