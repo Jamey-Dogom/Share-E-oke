@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/cdk": "^8.2.2",
+    "@angular/material": "^8.2.2",
     "express": "^4.17.1",
     "mongoose": "^5.7.3",
     "socket.io": "^2.3.0"

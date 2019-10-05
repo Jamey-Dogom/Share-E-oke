@@ -13,13 +13,41 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 </head>
 
 <body>
-   
-    <div class="container">
+    <mat-sidenav-container class="example-container" *ngIf="shouldRun">
 
-    </div>
+        <!-- SideNav elements here -->
+        <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+            (closed)="events.push('close!')">
+            Sidenav content
+        </mat-sidenav>
+
+        <!-- Main Content here -->
+        <mat-sidenav-content class="charcoal-bg">
+
+            <p><button class="sideNavTrigger btn" mat-button (click)="sidenav.toggle()"><i
+                        class=" material-icons">menu</i></button></p>
+
+            <!-- Spot for video -->
+            <video style="margin-left: 23%;" width="320" height="240" controls>
+
+            </video>
+
+            <!-- Div for lyrics -->
+            <div class="pad-10">
+                <p class="blue-f">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa id temporibus aliquam iste iusto
+                    magnam, nemo, saepe voluptate nobis alias optio porro voluptas obcaecati libero aut maxime
+                    blanditiis nisi? Fuga.</p>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
 </body>
 
 </html>

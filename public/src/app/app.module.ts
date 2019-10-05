@@ -22,24 +22,27 @@ const config: SocketIoConfig = { url: '10.64.5.159:3333', options: {} };
 
 
 import {
-  GoogleApiModule, 
-  GoogleApiService, 
-  GoogleAuthService, 
-  NgGapiClientConfig, 
+  GoogleApiModule,
+  GoogleApiService,
+  GoogleAuthService,
+  NgGapiClientConfig,
   NG_GAPI_CONFIG,
   GoogleApiConfig
-}  from "ng-gapi";
+} from "ng-gapi";
 
 
 import { PlaylistComponent } from './playlist/playlist.component';
-
+// SideNav
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule} from '@angular/material';
+import { MatCheckboxModule } from '@angular/material';
 
 let gapiClientConfig: NgGapiClientConfig = {
   client_id: "CLIENT_ID",
   discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
   scope: [
-      "https://www.googleapis.com/auth/analytics.readonly",
-      "https://www.googleapis.com/auth/analytics"
+    "https://www.googleapis.com/auth/analytics.readonly",
+    "https://www.googleapis.com/auth/analytics"
   ].join(" ")
 };
 
@@ -63,6 +66,9 @@ let gapiClientConfig: NgGapiClientConfig = {
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig
     }),
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatCheckboxModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

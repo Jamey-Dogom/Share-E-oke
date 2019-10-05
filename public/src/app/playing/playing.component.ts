@@ -5,6 +5,7 @@ import { HttpService } from '../http.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 // Bringing in The Socket
 import { Socket } from 'ngx-socket-io';
+import { MatSidenavContent } from '@angular/material';
 
 
 @Component({
@@ -12,7 +13,11 @@ import { Socket } from 'ngx-socket-io';
   templateUrl: './playing.component.html',
   styleUrls: ['./playing.component.css']
 })
-export class PlayingComponent implements OnInit   {
+export class PlayingComponent implements OnInit {
+  events: string[] = [];
+  opened: boolean;
+
+  shouldRun = true;
   roomName;
   constructor(
     private _route: ActivatedRoute,
@@ -22,8 +27,8 @@ export class PlayingComponent implements OnInit   {
 
   ngOnInit() {
     // Get room name from URL, save above and send to server to join room.
-    this._route.params 
-      .subscribe((params:Params) => {
+    this._route.params
+      .subscribe((params: Params) => {
         console.log("Params: ", params);
         this.roomName = params.room;
         this._socket.emit("roomName", params);
@@ -31,6 +36,4 @@ export class PlayingComponent implements OnInit   {
   }
 
 
-
-  
 }
