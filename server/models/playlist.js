@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
 const PlaylistSchema = new mongoose.Schema({
-    songs: [],
-    room: {
+    id: {
         type: String,
-        required: [
-            true,
-            "Please Enter a room name."
-        ]
+        unique: true
     },
-    users:[],
+    songs: [{}],
+    users: [],
 }, { timestamps: true })
 
 mongoose.model("Playlist", PlaylistSchema);
+
+
