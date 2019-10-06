@@ -23,8 +23,7 @@
   <mat-sidenav-container class="example-container" *ngIf="shouldRun">
 
     <!-- SideNav elements here -->
-    <mat-sidenav class = "blue-bg" style = "text-align: center;" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-      (closed)="events.push('close!')">
+    <mat-sidenav class = "blue-bg" style = "text-align: center;" #sidenav mode="side">
       <div class="row" style="z-index:1">
         <a  *ngIf="PL !== null" routerLink="/{{PL.id}}/search/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="    
         margin-top: 10%;
@@ -67,7 +66,7 @@
       <!-- Spot for video -->
       <div class="container youtube-player" *ngIf="videoID">
     <section class="panel panel-info">
-
+     
       <div class="panel-body">
         <!-- {{videoID}} -->
         <youtube-player
@@ -91,9 +90,12 @@
           <!-- <div class="pad-10" style = "background-color: #00A8E0; margin-top: 2%; margin-bottom: -2%;">
               <p class="white-f overflow"></p>
             </div> -->
-            <div>
-                <ack-webcam
+            <div class = "center">
+        
               
+                <ack-webcam
+              [options] = "options"
+            
               ></ack-webcam>
             </div>
 
@@ -103,11 +105,14 @@
 
 
       <!-- Div for lyrics -->
-      <!-- <div class="pad-10" style = "margin-top: -5%;">
-        <p class="white-f overflow">
-          {{PL.songs[0].lyrics}}
+   <div class="pad-10" style = "margin-top: -5%;"> 
+        <p class="white-f overflow" *ngIf = "currLyrics != ''">
+          {{currLyrics}}
+        
         </p>
-      </div> -->
+      </div>
+
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 

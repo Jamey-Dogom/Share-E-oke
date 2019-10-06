@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
 
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 
 
 
@@ -89,6 +91,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     BrowserAnimationsModule,
     MatSidenavModule,
     MatCheckboxModule,
+    ZXingScannerModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

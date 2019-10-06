@@ -23,6 +23,8 @@ export class SafePipe implements PipeTransform {
   }
 }
 
+
+
 @Component({
   selector: 'app-playing',
   templateUrl: './playing.component.html',
@@ -37,6 +39,7 @@ export class SafePipe implements PipeTransform {
 
 })
 export class PlayingComponent implements OnInit {
+  options = {video: true, audio : true}
   title = 'app'
   id = '';
   socketId;
@@ -47,6 +50,11 @@ export class PlayingComponent implements OnInit {
   private ytEvent;
   @Output() playTheNextSong = new EventEmitter();
   currState: any;
+ 
+  lyricsExist;
+  currLyrics = '';
+
+  // MediaDeviceInfo = []
 
   @Input() videoID: String;
   it: String;
@@ -61,21 +69,36 @@ export class PlayingComponent implements OnInit {
     }
   }
 
+
+  onSuccess(stream: any) {
+    console.log('capturing video stream');
+  };
+
+  onError(err) {
+    console.log(err);
+  };
+
+
   onStateChange(event) {
     console.log(this.videoID)
     let self = this
     this.ytEvent = event.data;
     if(event.data == 0 && this.PL.songs.length > 0){
+      this.lyricsExist = true;
       console.log("OVER");
       this.currState = event.data
       this.playTheNextSong.emit(this.currState);
       console.log(this.videoID)
       console.log(this.it)
+      this.currLyrics = this.PL.songs[0].lyrics;
       this.it = this.PL.songs.shift()
       JSON.stringify(this.it)
       this.player.loadVideoById(this.it);
       this.counter = 0;
     }
+    // else {
+    //   this.lyricsExist = false;
+    // }
     // this.playVideo();
     this.currState = 1
    
@@ -121,7 +144,9 @@ export class PlayingComponent implements OnInit {
   firstSong(playlist){
     this.PL = playlist
     if(playlist.songs.length > 0){
+      this.lyricsExist = true;
       this.videoID = this.PL.songs[0].videoId;
+      this.currLyrics = this.PL.songs[0].lyrics;
       this.PL.songs.shift()
     }
    
