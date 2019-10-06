@@ -98,6 +98,7 @@ export class SearchComponent implements OnInit {
   artist;
   title;
   lyrics;
+  count = 0;
 
   url = 'https://api.lyrics.ovh/v1/'
   getLyrics() {
@@ -116,13 +117,11 @@ export class SearchComponent implements OnInit {
   this.AddSong.singer = this.socketId;
   this.AddSong.videoId = id;
   this.AddSong.videoTitle = title;
-  this.getLyrics();
-  var start = new Date().getTime();
-  var end = start;
-  while(end < start + 2) {
-    end = new Date().getTime();
- }
   this.AddSong.lyrics = this.lyrics;
+  while(this.AddSong.lyrics == '' ){
+    this.count++;
+  }
+  console.log(this.count);
   this.PL.songs.push(this.AddSong);
   this._httpService.updatePlaylist(this.PL)
         .subscribe((data : any ) => {
@@ -153,6 +152,7 @@ export class SearchComponent implements OnInit {
  }
 
   makeRequest(q) {
+    this.getLyrics();
     let self = this
     console.log("hereeeee")
     this.weGotResults = true

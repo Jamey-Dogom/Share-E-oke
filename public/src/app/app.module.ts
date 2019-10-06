@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
-import { PlayingComponent } from './playing/playing.component';
+import { PlayingComponent, SafePipe } from './playing/playing.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
@@ -22,7 +22,7 @@ import { HttpService } from './http.service';
 
 // Jamey
 
-const config: SocketIoConfig = { url: '10.64.5.163.:3333', options: {} };
+const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
 
 // const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
 
@@ -60,6 +60,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     WelcomeComponent,
     SearchComponent,
     PlayingComponent,
+    SafePipe,
     PlaylistComponent,
     LyricsComponent
   ],

@@ -32,7 +32,7 @@ export class WelcomeComponent implements OnInit {
   joinRoom() {
     this._httpService.getPlaylist(this.roomName)
       .subscribe((data: any) => {
-        if (data[0].users.length > 0) {
+        if (data[0] == {} && data[0].users.length > 0) {
           const PL = data[0];
           PL.users.push(this.socketId);
           this._httpService.updatePlaylist(PL)
