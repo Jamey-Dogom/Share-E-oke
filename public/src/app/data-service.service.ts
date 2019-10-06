@@ -19,7 +19,6 @@ export class DataServiceService {
 
 
   getVideoChunks(): Observable<number> {
-    this.socket = socketIo('http://localhost:3333');
 
     this.socket.on('broadcast', (res) => {
       this.observer.next(res.data);

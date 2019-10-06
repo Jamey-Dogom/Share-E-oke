@@ -5,7 +5,7 @@ import { DataServiceService } from '../data-service.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 // Bringing in The Socket
 import { Socket } from 'ngx-socket-io';
-
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-playing',
@@ -17,9 +17,12 @@ export class PlayingComponent implements OnInit {
   opened: boolean;
   video: any;
   MediaRecorder: any;
-  chunks: [];
+  chunks=[];
   clip: any;
 
+  // SubScription
+  sub: Subscription;
+  STR;
 
   PL = null;
   shouldRun = true;
@@ -48,11 +51,14 @@ export class PlayingComponent implements OnInit {
     this.video = document.getElementById('video');
     this._socket.on('broadcast', function (data) {
       this.chunks.push(data);
+      console.log(data);
       this.playVideo();
-    })
+    });
+    this.singing();
   }
 
   singing() {
+    const self = this;
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({
         audio: true,
@@ -61,11 +67,12 @@ export class PlayingComponent implements OnInit {
           height: 240,
         },
       }).then(function (stream) {
-        this.video.srcObject = stream;
-        const recorder = new MediaRecorder(stream);
+        self.video.srcObject = stream;
+        const recorder = new this.MediaRecorder(stream);
         recorder.start(1000);
         recorder.ondataavailable = function (e) {
           this._socket.emit('datachunk', { room: this.roomName, data: e.data, type: e.data.type });
+          console.log(recorder.keys);
         }
       })
 
