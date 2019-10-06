@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
 
-import {CameraComponent} from './camera/camera.component';
+
 
 
 import { PlayingComponent, SafePipe } from './playing/playing.component';
@@ -17,7 +17,6 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
-import {WebcamModule} from 'ngx-webcam';
 
 import { HttpService } from './http.service';
 // Hector
@@ -73,7 +72,6 @@ let gapiClientConfig: NgGapiClientConfig = {
     SafePipe,
     PlaylistComponent,
     LyricsComponent,
-    CameraComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +89,6 @@ let gapiClientConfig: NgGapiClientConfig = {
     BrowserAnimationsModule,
     MatSidenavModule,
     MatCheckboxModule,
-    WebcamModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
