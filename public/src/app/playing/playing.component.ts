@@ -14,8 +14,6 @@ import { Socket } from 'ngx-socket-io';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { WebcamImage } from 'ngx-webcam';
-
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -38,19 +36,6 @@ export class SafePipe implements PipeTransform {
 // `
 
 })
-export class PlayingComponent implements OnInit {
-  events: string[] = [];
-  opened: boolean;
-  video: any;
-  MediaRecorder: any;
-  chunks = [];
-  clip: any;
-
-  // SubScription
-  sub: Subscription;
-  STR;
-
-
 export class PlayingComponent implements OnInit {
   title = 'app'
   id = '';
@@ -130,51 +115,9 @@ export class PlayingComponent implements OnInit {
             this.firstSong(this.PL);
           })
       })
-    this.video = document.getElementById('video');
-    this._socket.on('broadcast', function (data) {
-      this.chunks.push(data);
-      console.log(data);
-      this.playVideo();
-    });
-    this.singing();
   }
 
-  singing() {
-    const self = this;
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: {
-          width: 320,
-          height: 240,
-        },
-      }).then(function (stream) {
-        self.video.srcObject = stream;
-        const recorder = new this.MediaRecorder(stream);
-        recorder.start(1000);
-        recorder.ondataavailable = function (e) {
-          this._socket.emit('datachunk', { room: this.roomName, data: e.data, type: e.data.type });
-          console.log(recorder.keys);
-        }
-      })
-
-    }
-  }
-
-  playVideo() {
-    //Play video while chunks are in queue
-    while (this.chunks.length > 0) {
-      let thisData: any = this.chunks.shift();
-      let blob = new Blob([thisData.data], { type: thisData.type });
-      let url = window.URL.createObjectURL(blob);
-      this.clip = url;
-      // this.video.load();
-      // this.video.onloadeddata = function(){
-      //   this.video.play();
-      // }
-    }
-  }
-}
+ 
   firstSong(playlist){
     this.PL = playlist
     if(playlist.songs.length > 0){
@@ -217,5 +160,4 @@ export class PlayingComponent implements OnInit {
   onCamSuccess(){}
 }
 
-}
 
