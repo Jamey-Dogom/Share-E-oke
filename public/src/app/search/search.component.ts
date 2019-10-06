@@ -102,13 +102,17 @@ export class SearchComponent implements OnInit {
 
   url = 'https://api.lyrics.ovh/v1/'
   getLyrics() {
-    this.http.get(this.url+this.search.query1+'/'+this.search.query2).subscribe(data => {    
+    let artist = this.search.query1.split(' ').join('_')
+    console.log(artist)
+    let song = this.search.query2.split(' ').join('_')
+    console.log(song)
+  
+    this.http.get(this.url+ artist +'/'+ song).subscribe(data => {    
         this.data = data;
         this.lyrics=data['lyrics']
         console.log(this.lyrics);
     }, err => {
       console.log(err);
-     
     });
     
   }
@@ -133,7 +137,7 @@ export class SearchComponent implements OnInit {
           } else {
             if(self.PL.songs.length == 1){
               //play song
-              
+              console.log(self.PL);
               this._router.navigate([`/${this.roomName}/`,'playing',`${this.socketId}`])
             } else{
               this._router.navigate([`/${this.roomName}/`,'playlist',`${this.socketId}`])

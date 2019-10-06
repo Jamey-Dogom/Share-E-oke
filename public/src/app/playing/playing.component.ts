@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, ViewChild, ElementRef, PipeTransform, Pipe, OnInit } from '@angular/core';
 import { DomSanitizer } from "@angular/platform-browser";
 import { Output, Input, EventEmitter } from '@angular/core';
+import { WebCamComponent } from 'ack-angular-webcam';
 
 import { HttpService } from '../http.service';
 import { DataServiceService } from '../data-service.service';
@@ -183,4 +184,38 @@ export class PlayingComponent implements OnInit {
    
   }
 
+
+
+  // genBase64( webcam:WebCamComponent ){
+  //   webcam.getBase64()
+  //   .then( base=>this.base64=base)
+  //   .catch( e=>console.error(e) )
+  // }
+ 
+  //get HTML5 FormData object and pretend to post to server
+  // genPostData( webcam:WebCamComponent ){
+  //   webcam.captureAsFormData({fileName:'file.jpg'})
+  //   .then( formData=>this.postFormData(formData) )
+  //   .catch( e=>console.error(e) )
+  // }
+ 
+  //a pretend process that would post the webcam photo taken
+  // postFormData(formData){
+  //   const config = {
+  //     method:"post",
+  //     url:"http://www.aviorsciences.com/",
+  //     body: formData
+  //   }
+ 
+  //   const request = new Request(config)
+ 
+  //   return this.http.request( request )
+  // }
+ 
+  onCamError(err){}
+ 
+  onCamSuccess(){}
 }
+
+}
+
