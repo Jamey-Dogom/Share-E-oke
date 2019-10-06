@@ -27,19 +27,19 @@
       (closed)="events.push('close!')">
       <div class="row" style="z-index:1">
         <a  *ngIf="PL !== null" routerLink="/{{PL.id}}/search/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="    
-        margin-top: 2%;
-        left: 19%;
-        margin-bottom: 11%;
-        padding-left: 6%;
-        padding-right: 12%;">🔎 Search</a>
+        margin-top: 10%;
+    left: -6%;
+    margin-bottom: 11%;
+    padding-left: 13%;
+    padding-right: 12%;">🔎 Search</a>
 
 
 
         <a *ngIf="PL !== null" routerLink="/{{PL.id}}/playlist/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="
                                         
                                         position: relative;
-    margin-top: 31%;
-    left: -28%;
+    margin-top: 9%;
+    left: -7%;
     padding-left: 8%;
     padding-right: 9%;
     border-radius: 6%;">🎶 Playlist</a>
@@ -82,28 +82,19 @@
       </div>
     </section>
 
-    <!-- <div class="col-md-12">
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-default" (click)="playVideo()">Play</button>
-        <button type="button" class="btn btn-default" (click)="pauseVideo()">Pause</button>
-      </div>
-    </div>
 
-    <div class="col-md-12">
-      <section class="panel panel-success">
-        <div class="panel-heading">Player State</div>
-        <div class="panel-body">
-          <pre>{{ ytEvent }}</pre>
-        </div>
-      </section>
-    </div> -->
   </div>
           <!-- DIV FOR HECTOR/JOSH -->
           <!-- <div style = "height: 100px; width: 303px; background-color:black">
           </div> -->
 
-          <div class="pad-10" style = "background-color: #00A8E0; margin-top: 2%; margin-bottom: -2%;">
+          <!-- <div class="pad-10" style = "background-color: #00A8E0; margin-top: 2%; margin-bottom: -2%;">
               <p class="white-f overflow"></p>
+            </div> -->
+            <div>
+                <ack-webcam
+              
+              ></ack-webcam>
             </div>
 
       <!-- Div for lyrics -->

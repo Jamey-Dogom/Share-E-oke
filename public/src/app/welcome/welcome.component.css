@@ -1,11 +1,13 @@
 body {
     background-color: #222831; 
+    font-family: 'Mansalva', cursive;
 }
 
 /* Charcoal: 222831 */
 /* Att Blue 00A8E0 */
 .blue-f {
     color: #00A8E0;
+    font-size: 50px;
 }
 
 .blue-bg {
