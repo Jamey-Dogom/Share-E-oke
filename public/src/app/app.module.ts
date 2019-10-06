@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { WebCamModule } from 'ack-angular-webcam';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,13 +63,15 @@ let gapiClientConfig: NgGapiClientConfig = {
     PlayingComponent,
     SafePipe,
     PlaylistComponent,
-    LyricsComponent
+    LyricsComponent,
+
   ],
   imports: [
     BrowserModule,
     NgxYoutubePlayerModule.forRoot(),
     // YoutubePlayerModule,npm i ngx-youtube-player
     AppRoutingModule,
+    WebCamModule,
     FormsModule,
     SocketIoModule.forRoot(config),
     HttpClientModule,

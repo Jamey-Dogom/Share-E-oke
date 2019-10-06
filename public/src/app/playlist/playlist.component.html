@@ -26,21 +26,24 @@
     <mat-sidenav class="blue-bg" style="text-align: center;" #sidenav mode="side" [(opened)]="opened"
       (opened)="events.push('open!')" (closed)="events.push('close!')">
       <div class="row" style="z-index:1">
-        <a *ngIf="PL !== null" routerLink="/{{PL.id}}/search/{{socketId}}"
-          class="waves-effect waves-light btn charcoal-bg" style="margin-top: 10%;
-            left: -1%;
-            margin-bottom: 11%;
-            padding-left: 10%;
-            padding-right: 12%;">🔎 Search</a>
-
-        <a *ngIf="PL !== null" routerLink="/{{PL.id}}/playing/{{socketId}}"
-          class="waves-effect waves-light btn charcoal-bg" style="
-                                        
-        position: relative;
-        margin-top: 8%;
-        left: -1%;
-        border-radius: 6%;">🎶 Playing</a>
-      </div>
+          <a  *ngIf="PL !== null" routerLink="/{{PL.id}}/search/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="    
+          margin-top: 2%;
+          left: 19%;
+          margin-bottom: 11%;
+          padding-left: 6%;
+          padding-right: 12%;">🔎 Search</a>
+  
+  
+  
+          <a *ngIf="PL !== null" routerLink="/{{PL.id}}/playing/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="
+                                          
+                                          position: relative;
+      margin-top: 31%;
+      left: -28%;
+      padding-left: 8%;
+      padding-right: 9%;
+      border-radius: 6%;">🎶Playing</a>
+        </div>
 
       <div *ngIf="PL !== null">
         <h5 class="down" style="font-weight: bold">🎤 {{PL.id}}'s singers 🎤</h5>
