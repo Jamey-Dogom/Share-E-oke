@@ -116,12 +116,12 @@ export class SearchComponent implements OnInit {
   this.AddSong.singer = this.socketId;
   this.AddSong.videoId = id;
   this.AddSong.videoTitle = title;
-//   this.getLyrics();
-//   var start = new Date().getTime();
-//   var end = start;
-//   while(end < start + 5) {
-//     end = new Date().getTime();
-//  }
+  this.getLyrics();
+  var start = new Date().getTime();
+  var end = start;
+  while(end < start + 2) {
+    end = new Date().getTime();
+ }
   this.AddSong.lyrics = this.lyrics;
   this.PL.songs.push(this.AddSong);
   this._httpService.updatePlaylist(this.PL)
@@ -134,6 +134,7 @@ export class SearchComponent implements OnInit {
           } else {
             if(self.PL.songs.length == 1){
               //play song
+              
               this._router.navigate([`/${this.roomName}/`,'playing',`${this.socketId}`])
             } else{
               this._router.navigate([`/${this.roomName}/`,'playlist',`${this.socketId}`])
@@ -141,7 +142,6 @@ export class SearchComponent implements OnInit {
             
           }
         })
-
 
   this.AddSong = {
     singer : '',
@@ -151,89 +151,6 @@ export class SearchComponent implements OnInit {
   }
 
  }
-
-
-  // onSubmit() {
-    // if there is a song playing 
-    // add the song the playlist songs[]
-
-    // send the server to emit to everyone
-    // in the room that a new song was added
-
-    // update the playlist in mongo with new song
-    // let self = this
-
-
-    // check if there is a song playing
-    // if (this.playing) {
-    //   console.log("something is playing")
-    //   let nextUp = {
-    //     id: this.newSong.link,
-    //     name: this.newSong.name,
-    //     likes: 0
-    //   }
-    //   this.newSong = {
-    //     link: '',
-    //     name: ''
-    //   }
-    //   if (nextUp.name != '') {
-    //     this.allPlaylistSongs.push(nextUp);
-    //     // Sending song back to server to emit to room
-    //     this._socket.emit("nextSong", { song: nextUp, room: this.roomName });
-    //   }
-
-
-    //   try {
-    //     console.log(self.playlist)
-
-    //     self.playlist.songs.push(nextUp);
-    //     this._socket.on("updated", (data: any) => {
-    //       this.playlist = data;
-    //       console.log("new playlist", this.playlist)
-
-    //     });
-    //   }
-    //   catch (e) {
-    //     console.log(e)
-    //   }
-
-
-      // this will send the playlist to the server
-
-
-      // this._httpService.createSong({
-      //   id: this.newSong.link,
-      //   likes: [],
-      //   postedBy: this.userId
-      // })
-      //   .subscribe((data: any) => {
-      //     console.log("should be a playlist object: ", this.playlist);
-      //     this.playlist.songs.push(data);
-      //     console.log("should be a playlist object 2: ", this.playlist);
-      //     this._httpService.updatePlaylist(this.playlist)
-      //       .subscribe((data: any) => {
-      //         console.log(data)
-      //       });
-      //   })
-      // this.newSong = {
-      //   link: ''
-      // }
-      // this._httpService.updatePlaylist(this.playlist)
-      //   .subscribe(playlist => console.log(playlist));
-    // }
-    // if not play the song - dont append the playlist and play song
-  //   else {
-  //     this.SongId = this.newSong.link;
-  //     this.playing = true;
-  //     // Send the song to the server to tell everyone in the room to play it
-  //     this._socket.emit("playThis", { songLink: this.newSong.link, room: this.roomName });
-  //     this.newSong = {
-  //       link: '',
-  //       name: ''
-  //     }
-  //   }
-
-  // }
 
   makeRequest(q) {
     let self = this
@@ -271,14 +188,6 @@ export class SearchComponent implements OnInit {
     });
   }
 
-
-  triggerEvent() {
-    console.log("suhhhh")
-    // var target = event.target || event.srcElement || event.currentTarget;
-    // var idAttr = target.attributes.id;
-    // console.log(idAttr);
-  }
-
   myFunction() {
     console.log(this.search.query1)
     console.log(window['gapi'])
@@ -304,19 +213,6 @@ export class SearchComponent implements OnInit {
 
     });
 
-  }
-
-  playTheNextSong(currState) {
-    console.log("HERE")
-    this.SongId = null;
-    if (currState == 0) {
-      // // if (this.allPlaylistSongs.length != 0) {
-      // //   console.log(this.allPlaylistSongs[0].id)
-      // //   this.SongId = this.allPlaylistSongs[0].id
-      // //   this.playing = true;
-      // //   this.allPlaylistSongs.shift();
-      // }
-    }
   }
 
 
