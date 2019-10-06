@@ -62,26 +62,57 @@
 
 
       <!-- Spot for video -->
-      <video style="margin-left: 5.5%;" width="320" height="240" controls>
+      <div class="container youtube-player" *ngIf="videoID">
+    <section class="panel panel-info">
 
-      </video>
+      <div class="panel-body">
+        <!-- {{videoID}} -->
+        <youtube-player
+          videoId="{{videoID}}"
+          (ready)="savePlayer($event)"
+          (change)="onStateChange($event)"
+          width="303"
+          height="80"
+          
+        >
+        </youtube-player>
+      </div>
+    </section>
+
+    <!-- <div class="col-md-12">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click)="playVideo()">Play</button>
+        <button type="button" class="btn btn-default" (click)="pauseVideo()">Pause</button>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <section class="panel panel-success">
+        <div class="panel-heading">Player State</div>
+        <div class="panel-body">
+          <pre>{{ ytEvent }}</pre>
+        </div>
+      </section>
+    </div> -->
+  </div>
+          <!-- DIV FOR HECTOR/JOSH -->
+          <!-- <div style = "height: 100px; width: 303px; background-color:black">
+          </div> -->
+
+          <div class="pad-10" style = "background-color: #00A8E0; margin-top: 2%; margin-bottom: -2%;">
+              <p class="white-f overflow"></p>
+            </div>
 
       <!-- Div for lyrics -->
-      <div class="pad-10">
-        <p class="white-f overflow">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa id temporibus aliquam
-          iste iusto
-          magnam, nemo, saepe voluptate nobis alias optio porro voluptas obcaecati libero aut maxime
-          blanditiis nisi? Fuga. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa id temporibus aliquam
-          iste iusto
-          magnam, nemo, saepe voluptate nobis alias optio porro voluptas obcaecati libero aut maxime
-          blanditiis nisi? Fuga. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa id temporibus aliquam
-          iste iusto
-          magnam, nemo, saepe voluptate nobis alias optio porro voluptas obcaecati libero aut maxime
-          blanditiis nisi? Fuga.</p>
+      <div class="pad-10" style = "margin-top: -5%;">
+        <p class="white-f overflow">
+          {{PL.songs[0].lyrics}}
+        </p>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
 </body>
 
-</html> -->
+</html> 
+
