@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/static/scripts.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA,C","file":"scripts.js","sourcesContent":["function getMediaRecorder(stream) {\n    const media = new MediaRecorder(stream);\n    return media;\n}"],"sourceRoot":"webpack:///"}
