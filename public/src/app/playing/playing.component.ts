@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../http.service';
 
 // Added Activated Route and Params to get the Document
@@ -16,6 +16,7 @@ export class PlayingComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
 
+  socketId;
   PL = null;
   shouldRun = true;
   roomName;
@@ -33,9 +34,10 @@ export class PlayingComponent implements OnInit {
       .subscribe((params: Params) => {
         console.log("Params: ", params);
         this.roomName = params.room;
+        this.socketId = params.user;
         this._httpService.getPlaylist(params.room)
           .subscribe((data:any) => {
-            this.PL = data.playlist[0];
+            this.PL = data[0];
             console.log('Playlist: ', this.PL);
           })
       })

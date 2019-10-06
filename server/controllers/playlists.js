@@ -22,7 +22,7 @@ module.exports = {
 
     getOne(req, res) {
         Playlist.find({ id: req.params.id })
-            .then(playlist => res.json({ playlist }))
+            .then(playlist => res.json(playlist ))
             .catch(e => res.json({ errors: e }));
     },
 

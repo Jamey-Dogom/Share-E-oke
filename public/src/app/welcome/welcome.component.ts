@@ -1,3 +1,6 @@
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 // Bringing in The Socket
@@ -29,22 +32,24 @@ export class WelcomeComponent implements OnInit {
   joinRoom() {
     this._httpService.getPlaylist(this.roomName)
       .subscribe((data: any) => {
-        if (data.playlist.length > 0) {
-          const PL = data.playlist[0];
+        if (data[0].users.length > 0) {
+          const PL = data[0];
           PL.users.push(this.socketId);
           this._httpService.updatePlaylist(PL)
             .subscribe((playlist:any) => {
-              this._router.navigate([`/${this.roomName}/`, 'playing'])
+              this._router.navigate([`/${this.roomName}/`,'playing',`${this.socketId}`])
             }); 
           
         } else {
           this._httpService.createPlaylist({ id: this.roomName, users: [this.socketId] })
             .subscribe((playlist: any) => {
               console.log(playlist);
-              this._router.navigate([`/${this.roomName}/`,'playing'])
+              this._router.navigate([`/${this.roomName}/`,'playing',`${this.socketId}`])
             });
         }
       })
     // this._router.navigate([`/${this.roomName}/`, "playing"])
   }
 }
+              
+   

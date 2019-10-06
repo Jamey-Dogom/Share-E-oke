@@ -14,15 +14,15 @@ const routes: Routes = [
     component: WelcomeComponent,
   },
   {
-    path: ':room/playing',
+    path: ':room/playing/:user',
     component: PlayingComponent,
   },
   {
-    path: ':room/search',
+    path: ':room/search/:user',
     component: SearchComponent,
   },
   {
-    path: ':room/playlist',
+    path: ':room/playlist/:user',
     component: PlaylistComponent,
   },
   // {
