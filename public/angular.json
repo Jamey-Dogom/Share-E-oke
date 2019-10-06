@@ -21,7 +21,8 @@
             "aot": false,
             "assets": [
               "src/favicon.png",
-              "src/assets"
+              "src/assets",
+              "src/assets/img/shareoke.png"
             ],
             "styles": [
               "src/custom-theme.scss",

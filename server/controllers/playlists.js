@@ -22,8 +22,8 @@ module.exports = {
 
     getOne(req, res) {
         Playlist.find({ id: req.params.id })
-            .then(playlist => res.json({ playlist }))
-            .catch(e => res.json({ errors: e }));
+            .then(playlist => res.json(playlist ))
+            .catch(e => res.json( null ));
     },
 
     update: function (req, res) {

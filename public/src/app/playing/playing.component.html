@@ -2,38 +2,110 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Party Playing</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Party Playing</title>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <!-- Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 </head>
 
 <body>
-    <mat-sidenav-container class="example-container" *ngIf="shouldRun">
+  <mat-sidenav-container class="example-container" *ngIf="shouldRun">
 
-        <!-- SideNav elements here -->
-        <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-            (closed)="events.push('close!')">
-            <div *ngIf="PL !== null">
-                <div *ngFor="let user of PL.users">
-                    <p class="pad-2">{{user}}</p>
-                    <div class="charcoal-f divider">
+    <!-- SideNav elements here -->
+    <mat-sidenav class = "blue-bg" style = "text-align: center;" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+      (closed)="events.push('close!')">
+      <div class="row" style="z-index:1">
+        <a  *ngIf="PL !== null" routerLink="/{{PL.id}}/search/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="    
+        margin-top: 2%;
+        left: 19%;
+        margin-bottom: 11%;
+        padding-left: 6%;
+        padding-right: 12%;">🔎 Search</a>
 
-                    </div>
-                </div>
+
+
+        <a *ngIf="PL !== null" routerLink="/{{PL.id}}/playlist/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="
+                                        
+                                        position: relative;
+    margin-top: 31%;
+    left: -28%;
+    padding-left: 8%;
+    padding-right: 9%;
+    border-radius: 6%;">🎶 Playlist</a>
+      </div>
+
+
+      <div *ngIf="PL !== null">
+        <h5 class="down" style="font-weight: bold">🎤 {{PL.id}}'s singers 🎤</h5>
+        <div *ngFor="let user of PL.users">
+          <p class="pad-3" style="text-align: center">{{user.substring(1, 7)}}</p>
+          <div class="charcoal-f divider">
+          </div>
+        </div>
+      </div>
+
+    </mat-sidenav>
+
+    <!-- Main Content here -->
+    <mat-sidenav-content class="charcoal-bg">
+
+      <p><button class="sideNavTrigger btn" style="background-color: #00A8E0" mat-button (click)="sidenav.toggle()"><i
+            class=" material-icons">menu</i></button></p>
+
+
+      <!-- Spot for video -->
+      <div class="container youtube-player" *ngIf="videoID">
+    <section class="panel panel-info">
+
+      <div class="panel-body">
+        <!-- {{videoID}} -->
+        <youtube-player
+          videoId="{{videoID}}"
+          (ready)="savePlayer($event)"
+          (change)="onStateChange($event)"
+          width="303"
+          height="80"
+          
+        >
+        </youtube-player>
+      </div>
+    </section>
+
+    <!-- <div class="col-md-12">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" (click)="playVideo()">Play</button>
+        <button type="button" class="btn btn-default" (click)="pauseVideo()">Pause</button>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <section class="panel panel-success">
+        <div class="panel-heading">Player State</div>
+        <div class="panel-body">
+          <pre>{{ ytEvent }}</pre>
+        </div>
+      </section>
+    </div> -->
+  </div>
+          <!-- DIV FOR HECTOR/JOSH -->
+          <!-- <div style = "height: 100px; width: 303px; background-color:black">
+          </div> -->
+
+          <div class="pad-10" style = "background-color: #00A8E0; margin-top: 2%; margin-bottom: -2%;">
+              <p class="white-f overflow"></p>
             </div>
-        </mat-sidenav>
+
 
         <!-- Main Content here -->
         <mat-sidenav-content class="charcoal-bg">
@@ -57,3 +129,18 @@
 </body>
 
 </html>
+
+      <!-- Div for lyrics -->
+      <div class="pad-10" style = "margin-top: -5%;">
+        <p class="white-f overflow">
+          {{PL.songs[0].lyrics}}
+        </p>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</body>
+
+</html> 
+
+

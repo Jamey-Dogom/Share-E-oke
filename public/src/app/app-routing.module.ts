@@ -5,6 +5,7 @@ import { SearchComponent } from './search/search.component';
 import { PlayingComponent } from './playing/playing.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { LyricsComponent } from './lyrics/lyrics.component';
+// import { SingStarComponent } from './sing-star/sing-star.component'
 
 
 const routes: Routes = [
@@ -14,17 +15,21 @@ const routes: Routes = [
     component: WelcomeComponent,
   },
   {
-    path: ':room/playing',
+    path: ':room/playing/:user',
     component: PlayingComponent,
   },
   {
-    path: ':room/search',
+    path: ':room/search/:user',
     component: SearchComponent,
   },
   {
-    path: ':room/playlist',
+    path: ':room/playlist/:user',
     component: PlaylistComponent,
   },
+//   {
+//   path: ':room/sing',
+//   component: SingStarComponent,
+// },
   // {
   //   path: ':room/lyrics',
   //   component: LyricsComponent,

@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { WebCamModule } from 'ack-angular-webcam';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
-import { PlayingComponent } from './playing/playing.component';
+
 import {CameraComponent} from './camera/camera.component';
+
+
+import { PlayingComponent, SafePipe } from './playing/playing.component';
 
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -17,7 +21,7 @@ import {WebcamModule} from 'ngx-webcam';
 
 import { HttpService } from './http.service';
 // Hector
-const config: SocketIoConfig = { url: '10.64.5.159:3333', options: {} };
+// const config: SocketIoConfig = { url: '10.64.5.159:3333', options: {} };
 
 // Jose
 // const config: SocketIoConfig = { url: '10.64.5.216:3333', options: {} };
@@ -25,6 +29,7 @@ const config: SocketIoConfig = { url: '10.64.5.159:3333', options: {} };
 // Jamey
 
 // const config: SocketIoConfig = { url: '172.20.10.2.:3333', options: {} };
+const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
 
 // const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
 
@@ -65,6 +70,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     WelcomeComponent,
     SearchComponent,
     PlayingComponent,
+    SafePipe,
     PlaylistComponent,
     LyricsComponent,
     CameraComponent
@@ -74,6 +80,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     NgxYoutubePlayerModule.forRoot(),
     // YoutubePlayerModule,npm i ngx-youtube-player
     AppRoutingModule,
+    WebCamModule,
     FormsModule,
     SocketIoModule.forRoot(config),
     HttpClientModule,

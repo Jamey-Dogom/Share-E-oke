@@ -2,50 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Party Playing</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Party Playing</title>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <!-- Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 </head>
 
 <body>
-    <mat-sidenav-container class="example-container" *ngIf="shouldRun">
+  <mat-sidenav-container class="example-container" *ngIf="shouldRun">
 
-        <!-- SideNav elements here -->
-        <mat-sidenav class="blue-bg" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-            (closed)="events.push('close!')">
-            <div *ngIf="PL !== null">
-                <div *ngFor="let user of PL.users">
-                    <p class="pad-2">{{user}}</p>
-                    <div class="charcoal-f divider">
+    <!-- SideNav elements here -->
+    <mat-sidenav class="blue-bg" style="text-align: center;" #sidenav mode="side" [(opened)]="opened"
+      (opened)="events.push('open!')" (closed)="events.push('close!')">
+      <div class="row" style="z-index:1">
+          <a  *ngIf="PL !== null" routerLink="/{{PL.id}}/search/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="    
+          margin-top: 2%;
+          left: 19%;
+          margin-bottom: 11%;
+          padding-left: 6%;
+          padding-right: 12%;">🔎 Search</a>
+  
+  
+  
+          <a *ngIf="PL !== null" routerLink="/{{PL.id}}/playing/{{socketId}}" class="waves-effect waves-light btn charcoal-bg" style="
+                                          
+                                          position: relative;
+      margin-top: 31%;
+      left: -28%;
+      padding-left: 8%;
+      padding-right: 9%;
+      border-radius: 6%;">🎶Playing</a>
+        </div>
 
-                    </div>
-                </div>
-            </div>
-        </mat-sidenav>
+      <div *ngIf="PL !== null">
+        <h5 class="down" style="font-weight: bold">🎤 {{PL.id}}'s singers 🎤</h5>
+        <div *ngFor="let user of PL.users">
+          <p class="pad-4" style="text-align: center">{{user.substring(1, 7)}}</p>
+          <div class="charcoal-f divider">
+          </div>
+        </div>
+      </div>
+
+    </mat-sidenav>
+
+    <!-- Main Content here -->
+    <mat-sidenav-content class="charcoal-bg">
+
+      <p><button class="sideNavTrigger btn" style="background-color: #00A8E0" mat-button (click)="sidenav.toggle()"><i
+            class=" material-icons">menu</i></button></p>
 
 
+      <!-- Div for lyrics -->
+      <div class="pad-10">
+        <div class="white-f overflow">
 
-        <!-- Main Content here -->
-        <mat-sidenav-content class="charcoal-bg">
-
-            <p><button class="sideNavTrigger btn" mat-button (click)="sidenav.toggle()"><i
-                        class=" material-icons">menu</i></button></p>
-
-
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+  <div class="row">
+        <div class="card-panel lighten-2" style="background-color: #00A8E0;" *ngFor="let song of PL.songs">{{song.videoTitle}}
+            <span style = "color: #222831;"> Sung by: {{song.singer}}</span>
+        </div>
+      </div>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
 </body>
 

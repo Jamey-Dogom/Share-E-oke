@@ -14,16 +14,21 @@ body {
     background-color: #00A8E0;
 }
 
-.charcoal-f {
-    color: #222831;
-}
-
 .charcoal-bg {
     background-color: #222831;
 }
 
+.down {
+    margin-top: 22%;
+}
+
 .white-bg {
     background-color: white;
+}
+
+.white-f {
+    color: white;
+    font-size: 16px;
 }
 
 .m-top-0 {
@@ -34,12 +39,13 @@ body {
     padding: 0;
 }
 
-.pad-10 {
-    padding: 10%;
+.overflow {
+        overflow: auto;
+      height: 500px;
 }
 
-.pad-2 {
-    padding: 2%;
+.pad-10 {
+    padding: 10%;
 }
 .blue-border {
     border: 4px solid #00A8E0;

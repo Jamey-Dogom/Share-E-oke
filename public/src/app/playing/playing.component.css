@@ -18,8 +18,17 @@ body {
     background-color: #222831;
 }
 
+.down {
+    margin-top: 22%;
+}
+
 .white-bg {
     background-color: white;
+}
+
+.white-f {
+    color: white;
+    font-size: 16px;
 }
 
 .m-top-0 {
@@ -28,6 +37,11 @@ body {
 
 .pad-0 {
     padding: 0;
+}
+
+.overflow {
+        overflow: auto;
+      height: 233px;
 }
 
 .pad-10 {

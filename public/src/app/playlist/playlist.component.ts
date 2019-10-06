@@ -9,12 +9,14 @@ import { Socket } from 'ngx-socket-io';
   styleUrls: ['./playlist.component.css']
 })
 export class PlaylistComponent implements OnInit {
-
+  events: string[] = [];
   opened: boolean;
-  PL = null;
 
+  socketId;
+  PL = null;
   shouldRun = true;
   roomName;
+  
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -22,19 +24,20 @@ export class PlaylistComponent implements OnInit {
     private _httpService: HttpService,
   ) { }
 
-
   ngOnInit() {
     // Get room name from URL, save above and send to server to join room.
     this._route.params
       .subscribe((params: Params) => {
         console.log("Params: ", params);
         this.roomName = params.room;
+        this.socketId = params.user;
         this._httpService.getPlaylist(params.room)
           .subscribe((data:any) => {
-            console.log("Playlist: ",data.playlist[0]);
-            this.PL = data.playlist[0];
+            this.PL = data[0];
+            console.log('Playlist: ', this.PL);
           })
       })
   }
 
-};
+
+}
