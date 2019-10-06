@@ -106,6 +106,30 @@
               <p class="white-f overflow"></p>
             </div>
 
+
+        <!-- Main Content here -->
+        <mat-sidenav-content class="charcoal-bg">
+
+            <p><button class="sideNavTrigger btn" mat-button (click)="sidenav.toggle()"><i
+                        class="material-icons">menu</i></button></p>
+
+            <!-- Spot for video -->
+            <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+
+            <!-- Div for lyrics -->
+            <div class="pad-10">
+                <p class="blue-f">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa id temporibus aliquam
+                    iste iusto
+                    magnam, nemo, saepe voluptate nobis alias optio porro voluptas obcaecati libero aut maxime
+                    blanditiis nisi? Fuga.</p>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</body>
+
+</html>
+
       <!-- Div for lyrics -->
       <div class="pad-10" style = "margin-top: -5%;">
         <p class="white-f overflow">
@@ -118,4 +142,5 @@
 </body>
 
 </html> 
+
 
