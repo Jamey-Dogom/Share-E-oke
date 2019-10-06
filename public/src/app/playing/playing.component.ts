@@ -5,7 +5,11 @@ import { DataServiceService } from '../data-service.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 // Bringing in The Socket
 import { Socket } from 'ngx-socket-io';
+// Webcam Dependencies
 import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import { WebcamImage } from 'ngx-webcam';
 
 @Component({
   selector: 'app-playing',
@@ -17,7 +21,7 @@ export class PlayingComponent implements OnInit {
   opened: boolean;
   video: any;
   MediaRecorder: any;
-  chunks=[];
+  chunks = [];
   clip: any;
 
   // SubScription

@@ -42,9 +42,7 @@
                         class="material-icons">menu</i></button></p>
 
             <!-- Spot for video -->
-            <video id="video" style="margin-left: 5.5%;" width="320" height="240" autoplay>
-                <source *ngIf="chunks.length > 0" [src]="clip">
-            </video>
+            <app-camera (pictureTaken)="handleImage($event)"></app-camera>
 
             <!-- Div for lyrics -->
             <div class="pad-10">
@@ -59,4 +57,3 @@
 </body>
 
 </html>
-
