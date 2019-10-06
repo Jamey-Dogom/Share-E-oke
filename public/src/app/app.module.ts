@@ -6,13 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SearchComponent } from './search/search.component';
+
+import {CameraComponent} from './camera/camera.component';
+
+
 import { PlayingComponent, SafePipe } from './playing/playing.component';
+
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
-
+import {WebcamModule} from 'ngx-webcam';
 
 import { HttpService } from './http.service';
 // Hector
@@ -23,9 +28,13 @@ import { HttpService } from './http.service';
 
 // Jamey
 
+// const config: SocketIoConfig = { url: '172.20.10.2.:3333', options: {} };
 const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
 
 // const config: SocketIoConfig = { url: '10.64.5.163:3333', options: {} };
+
+// JOSH.... JOOOOOOOOOSH!!!!!!!!!!!!!
+// const config: SocketIoConfig = { url: '192.168.43.19:3333', options: {} };
 
 
 import {
@@ -64,7 +73,7 @@ let gapiClientConfig: NgGapiClientConfig = {
     SafePipe,
     PlaylistComponent,
     LyricsComponent,
-
+    CameraComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +90,8 @@ let gapiClientConfig: NgGapiClientConfig = {
     }),
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    WebcamModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

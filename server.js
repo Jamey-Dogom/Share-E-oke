@@ -32,4 +32,9 @@ io.on("connection", function(socket) {
     socket.on("getId", function(){
         socket.emit("hereBro", {id: socket.id });
     });
+
+    // GET and EMIT datachunk from playing component
+    socket.on("datachunk", function(data){
+        io.to(data.room).emit('broadcast', data);
+    })
 });
