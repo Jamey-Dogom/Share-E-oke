@@ -48,7 +48,7 @@
       <div *ngIf="PL !== null">
         <h5 class="down" style="font-weight: bold">🎤 {{PL.id}}'s singers 🎤</h5>
         <div *ngFor="let user of PL.users">
-          <p class="pad-3" style="text-align: center">{{user.substring(1, 7)}}</p>
+          <p *ngIf="user" class="pad-3" style="text-align: center">{{user.substring(1, 7)}}</p>
           <div class="charcoal-f divider">
           </div>
         </div>
