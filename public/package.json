@@ -35,7 +35,7 @@
     "ngx-socket-io": "^3.0.1",
     "ngx-webcam": "^0.2.6",
     "ngx-youtube-player": "^7.1.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "quicklyrics": "^1.0.2",
     "rxjs": "~6.4.0",
     "simple-get-lyrics": "0.0.4",
